@@ -30,6 +30,35 @@ const IMAGE_URLS = [
   }
 ];
 
+const generateRandomFileName = () => {
+  const timestamp = Date.now();
+  const randomString = Math.random().toString(36).substring(7);
+  return `image_${timestamp}_${randomString}.jpg`;
+};
+
+const handleDownloadImage = async (imageUrl) => {
+  try {
+    // Fetch the image data
+    const response = await fetch(imageUrl);
+    const blob = await response.blob();
+
+    // Create a URL for the blob
+    const blobUrl = URL.createObjectURL(blob);
+    const fileName = generateRandomFileName();
+
+    // Create a download link and simulate a click to download the image
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = fileName;
+    link.click();
+
+    // Clean up the URL object
+    URL.revokeObjectURL(blobUrl);
+  } catch (error) {
+    console.error('Error downloading the image:', error);
+  }
+};
+
 function ImageMatting({ openEditor }) {
   const {
     imageUrl,
@@ -125,9 +154,12 @@ function ImageMatting({ openEditor }) {
         )}
 
         {hasProcessedImage && (
-          <button className={classes.primary} onClick={() => openEditor()}>
+          <div style={{display:"flex", flexDirection:"column", marginLeft:"auto", marginRight:"auto", justifyContent:"center"}}>
+          <button style={{margin:"2px"}} className={classes.primary} onClick={() => openEditor()}>
             <EditIcon /> Edit in CE.SDK
           </button>
+          <button style={{margin:"2px", marginRight:"auto", marginLeft:"auto"}} className={classes.primary} onClick={()=>{handleDownloadImage(imageUrl)}}>download</button>
+            </div>
         )}
 
         {!isProcessing && !hasProcessedImage && (
