@@ -19,10 +19,10 @@ const CaseComponent = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navigation = [
-    { name: 'Consulting', href: 'https://ridvan.org' },
-    { name: 'Textbook', href: 'https://textbook.ridvan.org' },
-    { name: 'Reflect', href: 'https://reflect.ridvan.org' },
-    { name: 'About', href: 'https://ridvan.org/about' },
+    { name: 'Consulting', href: 'https://ridvan.org?utm_source=removebackgroundapp' },
+    { name: 'Textbook', href: 'https://textbook.ridvan.org?utm_source=removebackgroundapp' },
+    { name: 'Reflect', href: 'https://reflect.ridvan.org?utm_source=removebackgroundapp' },
+    { name: 'About', href: 'https://ridvan.org/about?utm_source=removebackgroundapp' },
   ]
 
   return (
@@ -32,7 +32,7 @@ const CaseComponent = () => {
       <header className="bg-gray-900">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <a href="https://ridvan.org" className="-m-1.5 p-1.5">
+          <a href="https://ridvan.org?utm_source=removebackgroundapp" className="-m-1.5 p-1.5">
             <span className="sr-only">Ridván</span>
             <img className="h-8 w-auto" src="https://www.ridvan.org/nextImageExportOptimizer/ridvand.0ccc840f-opt-1080.WEBP" alt="" />
           </a>
