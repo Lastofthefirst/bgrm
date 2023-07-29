@@ -35,7 +35,7 @@ function App() {
         <meta itemProp="image" content={meta.metaImg} />
         <meta name="twitter:image" content={meta.metaImg} />
         <meta name="image" property="og:image" content={meta.metaImg} />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        
         {/* <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630"></meta> */}
 
