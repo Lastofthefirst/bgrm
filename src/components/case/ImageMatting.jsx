@@ -1,33 +1,34 @@
-import classNames from 'classnames';
-import { useMemo, useEffect, useState } from 'react';
-import { ReactComponent as ChevronLeftIcon } from './icons/ChevronLeft.svg';
-import { ReactComponent as EditIcon } from './icons/Edit.svg';
-import { ReactComponent as SpinnerIcon } from './icons/Spinner.svg';
-import { ReactComponent as UploadIcon } from './icons/Upload.svg';
-import classes from './ImageMatting.module.css';
-import { useImageMatting } from './ImageMattingContext';
+import classNames from "classnames";
+import { useMemo, useEffect, useState } from "react";
+import { ReactComponent as ChevronLeftIcon } from "./icons/ChevronLeft.svg";
+import { ReactComponent as EditIcon } from "./icons/Edit.svg";
+import { ReactComponent as SpinnerIcon } from "./icons/Spinner.svg";
+import { ReactComponent as UploadIcon } from "./icons/Upload.svg";
+import classes from "./ImageMatting.module.css";
+import { useImageMatting } from "./ImageMattingContext";
+import { getCropped, getBorders } from "image-trim";
 
 const IMAGE_URLS = [
   {
-    url: 'https://images.unsplash.com/photo-1569339500890-0740003e2f47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80',
-    alt: "Templo Bahá'í de Sudamérica, Santiago de Chile."
+    url: "https://images.unsplash.com/photo-1569339500890-0740003e2f47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80",
+    alt: "Templo Bahá'í de Sudamérica, Santiago de Chile.",
   },
   {
-    url: 'https://images.unsplash.com/photo-1688257609244-3f2a893f19d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1838&q=80',
-    alt: 'Bahá’í house of worship in India.'
+    url: "https://images.unsplash.com/photo-1688257609244-3f2a893f19d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1838&q=80",
+    alt: "Bahá’í house of worship in India.",
   },
   {
-    url: 'https://images.unsplash.com/photo-1661925207347-fedec12e0982?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80',
-    alt: "Bahá’í House of Worship in North America (Chicago - Wilmette, Illinois)"
+    url: "https://images.unsplash.com/photo-1661925207347-fedec12e0982?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80",
+    alt: "Bahá’í House of Worship in North America (Chicago - Wilmette, Illinois)",
   },
   // {
   //   url: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=pauline-loroy-U3aF7hgUSrk-unsplash.jpg&w=1920',
   //   alt: 'white and brown long coat large dog by Pauline Loroy'
   // },
   {
-    url: 'https://images.unsplash.com/photo-1540492649367-c8565a571e4b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=andreas-m-p40QuGwGCcw-unsplash.jpg&w=1920',
-    alt: 'green plant on yellow ceramic pot by Andreas M'
-  }
+    url: "https://images.unsplash.com/photo-1540492649367-c8565a571e4b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=andreas-m-p40QuGwGCcw-unsplash.jpg&w=1920",
+    alt: "green plant on yellow ceramic pot by Andreas M",
+  },
 ];
 
 const generateRandomFileName = () => {
@@ -36,7 +37,7 @@ const generateRandomFileName = () => {
   return `image_${timestamp}_${randomString}.jpg`;
 };
 
-const handleDownloadImage = async (imageUrl) => {
+const handleDownloadImage = async (imageUrl, crop) => {
   try {
     // Fetch the image data
     const response = await fetch(imageUrl);
@@ -46,16 +47,31 @@ const handleDownloadImage = async (imageUrl) => {
     const blobUrl = URL.createObjectURL(blob);
     const fileName = generateRandomFileName();
 
-    // Create a download link and simulate a click to download the image
-    const link = document.createElement('a');
-    link.href = blobUrl;
-    link.download = fileName;
-    link.click();
+    // let newUrl = await trimCanvas(blobUrl);
+    // console.log(blobUrl, newUrl);
+    if (crop) {
+     let uri = await getCropped(blobUrl, {});
 
-    // Clean up the URL object
-    URL.revokeObjectURL(blobUrl);
+      // Create a download link and simulate a click to download the image
+      const link = document.createElement("a");
+      link.href = uri[0];
+      link.download = fileName;
+      link.click();
+
+      // Clean up the URL object
+      URL.revokeObjectURL(blobUrl);
+    } else {
+      // Create a download link and simulate a click to download the image
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = fileName;
+      link.click();
+
+      // Clean up the URL object
+      URL.revokeObjectURL(blobUrl);
+    }
   } catch (error) {
-    console.error('Error downloading the image:', error);
+    console.error("Error downloading the image:", error);
   }
 };
 
@@ -67,7 +83,7 @@ function ImageMatting({ openEditor }) {
     processMessage,
     resetState,
     processImage,
-    inferenceTime
+    inferenceTime,
   } = useImageMatting();
 
   const [stopwatch, setStopwatch] = useState(0);
@@ -104,7 +120,7 @@ function ImageMatting({ openEditor }) {
 
       <div
         className={classNames(classes.preview, {
-          [classes.dragging]: isDragging
+          [classes.dragging]: isDragging,
         })}
         onDragLeave={(e) => {
           if (!showUploadScreen) return;
@@ -143,23 +159,53 @@ function ImageMatting({ openEditor }) {
         {(isProcessing || hasProcessedImage) && (
           <img
             className={classNames(classes.imagePreview, {
-              [classes.blurred]: isProcessing
+              [classes.blurred]: isProcessing,
             })}
             style={{
-              opacity: imageUrl && imageUrl !== '' ? 1 : 0
+              opacity: imageUrl && imageUrl !== "" ? 1 : 0,
             }}
             src={imageUrl}
-            alt={hasProcessedImage ? 'Processed Image' : 'Uploaded Image'}
+            alt={hasProcessedImage ? "Processed Image" : "Uploaded Image"}
           />
         )}
 
         {hasProcessedImage && (
-          <div style={{display:"flex", flexDirection:"column", marginLeft:"auto", marginRight:"auto", justifyContent:"center"}}>
-          <button style={{margin:"2px"}} className={classes.primary} onClick={() => openEditor()}>
-            <EditIcon /> Edit in CE.SDK
-          </button>
-          <button style={{margin:"2px", marginRight:"auto", marginLeft:"auto"}} className={classes.primary} onClick={()=>{handleDownloadImage(imageUrl)}}>download</button>
-            </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginLeft: "auto",
+              marginRight: "auto",
+              justifyContent: "center",
+            }}
+          >
+            {/* <button
+              style={{ margin: "2px" }}
+              className={classes.primary}
+              onClick={() => openEditor()}
+            >
+              <EditIcon /> Edit in CE.SDK
+            </button> */}
+               <button
+              style={{ margin: "2px", marginRight: "auto", marginLeft: "auto" }}
+              className={classes.primary}
+              onClick={() => {
+                handleDownloadImage(imageUrl, false);
+              }}
+            >
+              download
+            </button>
+            <button
+              style={{ margin: "2px", marginRight: "auto", marginLeft: "auto" }}
+              className={classes.primary}
+              onClick={() => {
+                handleDownloadImage(imageUrl, true);
+              }}
+            >
+              download and crop
+            </button>
+         
+          </div>
         )}
 
         {!isProcessing && !hasProcessedImage && (
@@ -189,8 +235,8 @@ function ImageMatting({ openEditor }) {
             <p className={classes.processMessage}>{processMessage}</p>
             {isProcessing && (
               <p className={classes.processStatus}>
-                {stopwatch.toFixed(2) + 's'}
-                {inferenceTime !== 0 && '/' + inferenceTime.toFixed(2) + 's'}
+                {stopwatch.toFixed(2) + "s"}
+                {inferenceTime !== 0 && "/" + inferenceTime.toFixed(2) + "s"}
               </p>
             )}
           </div>
