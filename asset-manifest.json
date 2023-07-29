@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0936aae8.css",
-    "main.js": "/static/js/main.b7cf6455.js",
+    "main.css": "/static/css/main.f21fd66c.css",
+    "main.js": "/static/js/main.6f8b652d.js",
     "static/media/IBMPlexSans-SemiBold.ttf": "/static/media/IBMPlexSans-SemiBold.f2e690b59fb90d236c08.ttf",
     "static/media/IBMPlexSans-Medium.ttf": "/static/media/IBMPlexSans-Medium.56fb541cbbc5462f1c33.ttf",
     "static/media/IBMPlexSans-Regular.ttf": "/static/media/IBMPlexSans-Regular.d77342fdcbcb6b3ce1b5.ttf",
@@ -17,11 +17,11 @@
     "static/media/Upload.svg": "/static/media/Upload.090fde8076c929e20d646bcdea3f9d70.svg",
     "static/media/Spinner.svg": "/static/media/Spinner.8537b7e1daa0390b2b2cc58f8baa7708.svg",
     "static/media/ChevronLeft.svg": "/static/media/ChevronLeft.badd204b09da46e0b90389644d4bed9e.svg",
-    "main.0936aae8.css.map": "/static/css/main.0936aae8.css.map",
-    "main.b7cf6455.js.map": "/static/js/main.b7cf6455.js.map"
+    "main.f21fd66c.css.map": "/static/css/main.f21fd66c.css.map",
+    "main.6f8b652d.js.map": "/static/js/main.6f8b652d.js.map"
   },
   "entrypoints": [
-    "static/css/main.0936aae8.css",
-    "static/js/main.b7cf6455.js"
+    "static/css/main.f21fd66c.css",
+    "static/js/main.6f8b652d.js"
   ]
 }
