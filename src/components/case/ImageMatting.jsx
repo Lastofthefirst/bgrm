@@ -9,21 +9,21 @@ import { useImageMatting } from './ImageMattingContext';
 
 const IMAGE_URLS = [
   {
-    url: 'https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=good-faces-xmSWVeGEnJw-unsplash.jpg&w=1920',
-    alt: 'a woman with an afro is looking at the camera by Good Faces'
+    url: 'https://images.unsplash.com/photo-1569339500890-0740003e2f47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80',
+    alt: "Templo Bahá'í de Sudamérica, Santiago de Chile."
   },
   {
-    url: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=dom-hill-nimElTcTNyY-unsplash.jpg&w=1920',
-    alt: 'woman in yellow tracksuit standing on basketball court side by Dom Hill'
+    url: 'https://images.unsplash.com/photo-1688257609244-3f2a893f19d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1838&q=80',
+    alt: 'Bahá’í house of worship in India.'
   },
   {
-    url: 'https://images.unsplash.com/photo-1628035514544-ebd32b766089?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=kristian-angelo-KW-jwdSgOw4-unsplash.jpg&w=1920',
-    alt: 'man in black leather jacket riding black motorcycle by Kristian Angelo'
+    url: 'https://images.unsplash.com/photo-1661925207347-fedec12e0982?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80',
+    alt: "Bahá’í House of Worship in North America (Chicago - Wilmette, Illinois)"
   },
-  {
-    url: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=pauline-loroy-U3aF7hgUSrk-unsplash.jpg&w=1920',
-    alt: 'white and brown long coat large dog by Pauline Loroy'
-  },
+  // {
+  //   url: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=pauline-loroy-U3aF7hgUSrk-unsplash.jpg&w=1920',
+  //   alt: 'white and brown long coat large dog by Pauline Loroy'
+  // },
   {
     url: 'https://images.unsplash.com/photo-1540492649367-c8565a571e4b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=andreas-m-p40QuGwGCcw-unsplash.jpg&w=1920',
     alt: 'green plant on yellow ceramic pot by Andreas M'
@@ -134,7 +134,7 @@ function ImageMatting({ openEditor }) {
           <div className={classes.uploadControls}>
             <UploadIcon />
             <label className={classes.upload}>
-              Upload Image
+              Upload Image to Remove Background
               <input
                 className={classes.hidden}
                 type="file"
