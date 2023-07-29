@@ -178,6 +178,9 @@ button.ghost {
   gap: 16px;
 }
 
+
+
+
 .sampleImagesWrapper > span {
   flex: 0 0 20px;
 
@@ -199,6 +202,8 @@ button.ghost {
 .sampleImage,
 .sampleImage > img {
   height: 120px;
+  object-fit: cover;
+
 }
 
 .dragging {

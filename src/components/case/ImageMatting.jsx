@@ -134,7 +134,7 @@ function ImageMatting({ openEditor }) {
           <div className={classes.uploadControls}>
             <UploadIcon />
             <label className={classes.upload}>
-              Upload Image to Remove Background
+              Upload to Remove Background
               <input
                 className={classes.hidden}
                 type="file"
