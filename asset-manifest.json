@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/bgrm/static/css/main.95667f18.css",
+    "main.js": "/bgrm/static/js/main.fa5f9981.js",
+    "static/media/IBMPlexSans-SemiBold.ttf": "/bgrm/static/media/IBMPlexSans-SemiBold.f2e690b59fb90d236c08.ttf",
+    "static/media/IBMPlexSans-Medium.ttf": "/bgrm/static/media/IBMPlexSans-Medium.56fb541cbbc5462f1c33.ttf",
+    "static/media/IBMPlexSans-Regular.ttf": "/bgrm/static/media/IBMPlexSans-Regular.d77342fdcbcb6b3ce1b5.ttf",
+    "static/media/IBMPlexSans-Bold.ttf": "/bgrm/static/media/IBMPlexSans-Bold.e933eba4e2fcc3d71b31.ttf",
+    "static/media/GTWalsheimPro-Bold.ttf": "/bgrm/static/media/GTWalsheimPro-Bold.2dbf49e9fcb548837711.ttf",
+    "static/media/GTWalsheimPro-Black.ttf": "/bgrm/static/media/GTWalsheimPro-Black.2dc24aec84cddc57c649.ttf",
+    "static/media/GTWalsheimPro-Black.woff": "/bgrm/static/media/GTWalsheimPro-Black.d1a05b37fac1e43eae61.woff",
+    "static/media/GTWalsheimPro-Bold.woff": "/bgrm/static/media/GTWalsheimPro-Bold.6ead5fc9d23b21a10d0a.woff",
+    "static/media/GTWalsheimPro-Black.woff2": "/bgrm/static/media/GTWalsheimPro-Black.3fa5ee7f8e647720d2fb.woff2",
+    "static/media/GTWalsheimPro-Bold.woff2": "/bgrm/static/media/GTWalsheimPro-Bold.6b113f6b3bd165884e16.woff2",
+    "static/media/Edit.svg": "/bgrm/static/media/Edit.d2625a8d24d2a1c72f9b87cac84252c4.svg",
+    "index.html": "/bgrm/index.html",
+    "static/media/Upload.svg": "/bgrm/static/media/Upload.090fde8076c929e20d646bcdea3f9d70.svg",
+    "static/media/Spinner.svg": "/bgrm/static/media/Spinner.8537b7e1daa0390b2b2cc58f8baa7708.svg",
+    "static/media/ChevronLeft.svg": "/bgrm/static/media/ChevronLeft.badd204b09da46e0b90389644d4bed9e.svg",
+    "main.95667f18.css.map": "/bgrm/static/css/main.95667f18.css.map",
+    "main.fa5f9981.js.map": "/bgrm/static/js/main.fa5f9981.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.95667f18.css",
+    "static/js/main.fa5f9981.js"
+  ]
+}
