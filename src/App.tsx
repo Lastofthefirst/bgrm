@@ -3,6 +3,12 @@ import React from 'react';
 import './App.css';
 
 function App() {
+  // let meta = {
+  //   url: "https://lastofthefirst.github.io/bgrm/",
+  //   metaImg: 'https://ridvan.org/meta.jpg',
+  //   description: "Free in browser background removal for your images.",
+  //   title: "Background removal - Ridván - Software Consultancy",
+  // }
 
 
     return (
